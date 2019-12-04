@@ -1,4 +1,7 @@
 <?php
+// php exercicio_2.php
+// operadores
+
 $ds_enter = "\n";
 
 // aritméticos
