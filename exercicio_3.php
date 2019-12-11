@@ -114,3 +114,39 @@ for ($i = 3; $i <= 5; $i++) {
       echo $ds_enter;
    }
 }
+
+
+// Escreva um programa que desenhe uma
+// pirâmide de asteriscos (*). A saída do seu programa
+// deve seguir o padrão abaixo:
+//   *
+//  ***
+// *****
+//*******
+
+$nr_tamanho = 4;
+$nr_espacos = $nr_tamanho;
+$nr_estrelas = 0;
+
+while ($nr_tamanho > 0) {
+   $nr_espacos = $nr_espacos - 1;
+   $nr_estrelas = $nr_estrelas + 1;
+
+   for ($i = 0; $i < $nr_espacos; $i++) {
+      echo " ";
+   }
+
+   for ($i = 0; $i < $nr_estrelas; $i++) {
+      echo "*";
+   }
+
+   if ($nr_estrelas > 1) {
+      for ($i = 1; $i < $nr_estrelas; $i++) {
+         echo "*";
+      }
+   }
+
+   echo "\n";
+
+   $nr_tamanho = $nr_tamanho - 1;
+}

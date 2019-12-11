@@ -11,3 +11,12 @@ php exercicio_2.php
 
 # 3 - Controle de Fluxo
 php exercicio_3.php
+
+# 4 - funções
+php exercicio_4.php
+
+# 5 - funções string
+php exercicio_5.php
+
+# 6 - array
+php exercicio_6.php
