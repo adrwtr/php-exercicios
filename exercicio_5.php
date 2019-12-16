@@ -62,6 +62,22 @@ echo $ds_enter;
 
 // exercicios
 
+// imprimir letra a letra de uma string
+$ds_string = "minha string";
+$nr_posicao = 0;
+$ds_letra = '';
+
+while($nr_posicao < strlen($ds_string)) {
+   $ds_letra = substr($ds_string, $nr_posicao, 1);
+   $nr_posicao = $nr_posicao + 1;
+
+   echo $ds_letra;
+   echo $ds_enter;
+}
+
+
+
+
 // conte qnatas vezes aparece Jesus na frase
 $ds_frase = 'Os evangelhos apresentam o ministério de João Batista enquanto precursor do ministério de Jesus. Iniciado com o seu batismo, Jesus dá início ao seu ministério nas áreas rurais da Judeia, perto do rio Jordão, com cerca de trinta anos de idade (Lucas 3:23). Jesus viaja, prega e realiza milagres, completando o ministério durante a Última Ceia com os seus discípulos em Jerusalém.';
 
