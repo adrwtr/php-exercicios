@@ -19,6 +19,7 @@ $arrString = [
 if ($nr_valor1 < $nr_valor2) {
    echo $nr_valor1 . " eh menor que " . $nr_valor2 . $ds_enter;
 }
+echo $ds_enter;
 
 
 // if else
@@ -27,7 +28,11 @@ if ($nr_valor1 > $nr_valor2) {
 } else {
    echo $nr_valor1 . " eh menor que " .$nr_valor2 . $ds_enter;
 }
+echo $ds_enter;
 
+// if ternario
+echo ($nr_valor1 > $nr_valor2) ? 'Maior' : 'Menor';
+echo $ds_enter;
 
 // switch
 switch ($nr_valor1) {
@@ -91,9 +96,9 @@ foreach($arrString as $nr_key => $ds_valor) {
    echo $ds_enter;
 }
 
-// Escreva um programa que imprime na tela os números
-// de 1 a 30 exceto os números
-// múltiplos de 3.
+// Escreva um programa que imprime na tela os numeros
+// de 1 a 30 exceto os numeros
+// m?ltiplos de 3.
 for ($i = 1; $i <= 100; $i++) {
    if ($i % 3 != 0) {
       echo $i;
@@ -104,7 +109,7 @@ echo $ds_enter;
 
 
 // Escreva um programa que imprime a tabuada
-// dos números de 3 a 5 de acordo com o padrão
+// dos numeros de 3 a 5 de acordo com o padrao
 for ($i = 3; $i <= 5; $i++) {
    echo "tabuada de " . $i;
    echo $ds_enter;
@@ -117,8 +122,8 @@ for ($i = 3; $i <= 5; $i++) {
 
 
 // Escreva um programa que desenhe uma
-// pirâmide de asteriscos (*). A saída do seu programa
-// deve seguir o padrão abaixo:
+// piraide de asteriscos (*). A saida do seu programa
+// deve seguir o padrao abaixo:
 //   *
 //  ***
 // *****
