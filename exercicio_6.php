@@ -90,3 +90,33 @@ echo count($arrNumeros);
 echo $ds_enter;
 
 
+
+// exercicio 1
+// somar todos os valores
+$nr_soma = 0;
+
+for ($i = 0; $i < count($arrNumeros); $i++ ) {
+    $nr_soma = $nr_soma + $arrNumeros[$i];
+}
+
+echo $nr_soma;
+echo $ds_enter;
+
+
+/*
+Exercício 4: Crie um método que recebe um array de inteiros e retorna a quantidade de elementos
+do array que são números negativos.
+
+
+Exercício 5: Crie um método que recebe um array de inteiros a e um valor inteiro x e retorna a
+quantidade de vezes que x aparece no array a.
+
+
+Exercício 6: Escreva um método que recebe um array de inteiros a e devolve um array de boolean
+onde, cada posição indique true se o elemento da posição correspondente de a é positivo e false
+caso seja negativo ou zero.
+
+Elabore um subprograma C que tenha como
+entrada um número inteiro e forneça como saída
+um valor inteiro indicando se o número é primo.
+*/
