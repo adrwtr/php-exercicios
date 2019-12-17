@@ -18,5 +18,8 @@ php exercicio_4.php
 # 5 - funções string
 php exercicio_5.php
 
-# 6 - array
+# 6 - array e funções de array
 php exercicio_6.php
+
+# 7 - arquivos
+php exercicio_7.php
