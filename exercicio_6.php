@@ -28,20 +28,24 @@ $arrChaveValor = [
 $arrMulti = [
     'pessoa_1' => [
         'nome' => 'nome da pessoa A',
-        'idade' => 'idade da pessoa A'
+        'idade' => 10
     ],
 
     'pessoa_2' => [
         'nome' => 'nome da pessoa B',
-        'idade' => 'idade da pessoa B'
+        'idade' => 12
     ],
 
     'pessoa_3' => [
         'nome' => 'nome da pessoa C',
-        'idade' => 'idade da pessoa C'
+        'idade' => 16
     ],
 ];
 
+// adicionar novo elemento no array
+$arrNumeros[] = 11;
+echo var_export($arrNumeros);
+echo $ds_enter;
 
 // array_chunk - Divide um array em pedaços
 echo var_export(
@@ -91,6 +95,8 @@ echo $ds_enter;
 
 
 
+
+
 // exercicio 1
 // somar todos os valores
 $nr_soma = 0;
@@ -102,21 +108,135 @@ for ($i = 0; $i < count($arrNumeros); $i++ ) {
 echo $nr_soma;
 echo $ds_enter;
 
+$nr_soma = 0;
+
+forEach($arrNumeros as $nr_chave => $nr_valor) {
+    $nr_soma = $nr_soma + $nr_valor;
+}
+
+echo $nr_soma;
+echo $ds_enter;
+
+
+// Crie um método que recebe um array de inteiros e retorna a quantidade de elementos
+// do array que são números negativos.
+$arrNumeros2 = array(1, -1, 2, -3, 10, 8, -8, 2, 3, -3, 2);
+
+function verificarNegativos($array) {
+    $nr_soma = 0;
+
+    forEach($array as $nr_valor) {
+        if ($nr_valor < 0) {
+            $nr_soma = $nr_soma + 1;
+        }
+    }
+
+    return $nr_soma;
+}
+
+echo verificarNegativos($arrNumeros2);
+echo $ds_enter;
+
+
+
+
+
+// Crie um método que recebe um array de inteiros a e um valor inteiro x e retorna a
+// quantidade de vezes que x aparece no array a.
+function verificarQuantasVezesEncontra($array, $nr_encontrar) {
+    $nr_soma = 0;
+
+    forEach($array as $nr_valor) {
+        if ($nr_valor == $nr_encontrar) {
+            $nr_soma = $nr_soma + 1;
+        }
+    }
+
+    return $nr_soma;
+}
+
+echo verificarQuantasVezesEncontra($arrNumeros2, 2);
+echo $ds_enter;
+
+
+
+// leitura do array $arrMulti e verificar a média de idade
+function getMediaIdade($array) {
+    $nr_soma = 0;
+    $nr_media = 0;
+
+    forEach($array as $arrPessoa) {
+        $nr_soma = $nr_soma + $arrPessoa['idade'];
+    }
+
+    $nr_media = $nr_soma / count($array);
+
+    return $nr_media;
+}
+
+echo getMediaIdade($arrMulti);
+echo $ds_enter;
+
+
+// Escreva um método que recebe um array de inteiros a
+// e devolve um array de boolean onde,
+// cada posição indique true se o elemento da posição correspondente de a é positivo e false
+// caso seja negativo ou zero.
+
+
+function verificarNegativosEPositivos($array) {
+    $novoArray = [];
+
+    forEach($array as $nr_valor) {
+        if ($nr_valor < 0) {
+            $novoArray[] = false;
+        } else {
+            $novoArray[] = true;
+        }
+    }
+
+    return $novoArray;
+}
+
+echo var_export(
+    verificarNegativosEPositivos($arrNumeros2)
+);
+echo $ds_enter;
+
+
+
 
 /*
-Exercício 4: Crie um método que recebe um array de inteiros e retorna a quantidade de elementos
-do array que são números negativos.
-
-
-Exercício 5: Crie um método que recebe um array de inteiros a e um valor inteiro x e retorna a
-quantidade de vezes que x aparece no array a.
-
-
-Exercício 6: Escreva um método que recebe um array de inteiros a e devolve um array de boolean
-onde, cada posição indique true se o elemento da posição correspondente de a é positivo e false
-caso seja negativo ou zero.
-
-Elabore um subprograma C que tenha como
-entrada um número inteiro e forneça como saída
-um valor inteiro indicando se o número é primo.
+criar um array novo de 1 a 50
+e criar uma funcao para indicar quais dos elementos sao primos
+Números primos são os números naturais que têm apenas dois divisores diferentes: o 1 e ele mesmo
 */
+$arrNovo = [];
+
+for ($i = 2; $i <= 50; $i++) {
+    $arrNovo[] = $i;
+}
+
+function getNumerosPrimos($array) {
+    $arrPrimos = [];
+
+    foreach ($array as $valor) {
+        $sn_divisivel = false;
+
+        for ($i = 2; $i < $valor; $i++) {
+            if ($valor % $i == 0) {
+                $sn_divisivel = true;
+            }
+        }
+
+        if ($sn_divisivel == false) {
+            $arrPrimos[] = $valor;
+        }
+    }
+
+    return $arrPrimos;
+}
+echo var_export(
+    getNumerosPrimos($arrNovo)
+);
+echo $ds_enter;
