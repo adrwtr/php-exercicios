@@ -2,6 +2,9 @@
 # 8 - classes
 # php exercicio_8.php
 
+# tipos definidos pelo programador
+# esturuta de dados que podemos definir
+
 $ds_enter = "\n";
 
 // exemplo classe simples
