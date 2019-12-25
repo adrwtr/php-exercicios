@@ -2,7 +2,6 @@
 # 7 - arquivos
 # php exercicio_7.php
 
-<?php
 $ds_enter = "\n";
 
 $ds_file_name = 'arquivo.txt';

@@ -98,7 +98,7 @@ foreach($arrString as $nr_key => $ds_valor) {
 
 // Escreva um programa que imprime na tela os numeros
 // de 1 a 30 exceto os numeros
-// m?ltiplos de 3.
+// múltiplos de 3.
 for ($i = 1; $i <= 100; $i++) {
    if ($i % 3 != 0) {
       echo $i;

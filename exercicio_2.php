@@ -4,7 +4,7 @@
 
 $ds_enter = "\n";
 
-// aritméticos
+// aritmeticos
 
 echo 1 + 1;
 echo $ds_enter;
@@ -39,7 +39,7 @@ echo $ds_enter;
 echo 1 == 1;
 echo $ds_enter;
 
-// diferença
+// diferenciaÃ§Ã£o
 echo 1 != 3;
 echo $ds_enter;
 
@@ -53,7 +53,7 @@ echo 3 <= 3;
 echo $ds_enter;
 
 
-// lógicos
+// lÃ³gicos
 
 echo 1 == 1 && 2 == 2;
 echo $ds_enter;

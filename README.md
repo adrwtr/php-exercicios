@@ -2,7 +2,6 @@
 
 Exercícios de programação feitos em PHP
 
-
 # 1 - Variáveis e impressão na tela
 php exercicio_1.php
 
@@ -23,3 +22,6 @@ php exercicio_6.php
 
 # 7 - arquivos
 php exercicio_7.php
+
+# 8 - Classes
+php exercicio_8.php
