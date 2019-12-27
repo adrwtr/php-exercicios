@@ -562,3 +562,136 @@ echo $ds_enter;
 
 echo $objStack->getTamanho();
 echo $ds_enter;
+
+
+
+/** 
+ * Lista duplamente encadeada
+ * É uma lista que conhece o proximo elemento, e também o elemento anterior
+ */
+class ElementoEncadeado {
+    private $valor;
+    private $objElementoPai;
+    private $objElementoFilho;
+
+    public function __construct($valor) {
+        $this->valor = $valor;
+    }
+
+    public function getValor() {
+        return $this->valor;
+    }
+
+    public function setElementoPai($objElemento) {
+        $this->objElementoPai = $objElemento;
+    }
+
+    public function getElementoPai() {
+        return $this->objElementoPai;
+    }
+
+    public function setElementoFilho($objElemento) {
+        $this->objElementoFilho = $objElemento;
+    }
+
+    public function getElementoFilho() {
+        return $this->objElementoFilho;
+    }
+}
+
+
+class ListaEncadeada {
+    private $objElementoAtual;
+    private $objElementoAnterior;
+    private $objElementoInicial;
+    private $nr_tamanho = 0;
+
+    public function __construct() {
+        // vamos iniciar nosso vetor
+        $this->objElementoInicial = null;
+        $this->objElementoAtual = null;
+        $this->objElementoAnterior = null;
+        $this->nr_contador = 0;
+        $this->nr_tamanho = 0;
+    }
+
+    public function add($valor) {
+        // cria o valor atual
+        $this->objElementoAtual = new ElementoEncadeado($valor);
+
+        // joga dentro do anterior, o elemento atual
+        if ($this->objElementoAnterior != null) {
+            $this->objElementoAnterior->setElementoFilho(
+                $this->objElementoAtual
+            );
+        }
+
+        $this->objElementoAtual->setElementoPai($this->objElementoAnterior);
+
+        // logica para ter sempre um anterior
+        $this->objElementoAnterior = $this->objElementoAtual;
+
+        // seta o elemento inicial
+        if ($this->objElementoInicial == null) {
+            $this->objElementoInicial = $this->objElementoAtual;
+        }
+
+        $this->nr_tamanho++;
+
+        return $this;
+    }
+
+    public function getTamanho() {
+        return $this->nr_tamanho;
+    }
+
+    public function getValue() {        
+        return $this->objElementoAtual->getValor();
+    }
+
+    public function getElementos() {
+        $objElemento = $this->objElementoInicial;
+        $valor = $objElemento->getValor();
+
+        while ($valor != null) {
+            echo $valor . ' ';
+            $objElemento = $objElemento->getElementoFilho();
+            $valor  = null;
+
+            if ($objElemento  != null) {
+                $valor = $objElemento->getValor();
+            }            
+        }
+
+        return $this;
+    }
+
+    public function getElementosFromTop() {
+        $objElemento = $this->objElementoAtual;
+        $valor = $objElemento->getValor();
+
+        while ($valor != null) {
+            echo $valor . ' ';
+            $objElemento = $objElemento->getElementoPai();
+            $valor  = null;
+
+            if ($objElemento  != null) {
+                $valor = $objElemento->getValor();
+            }            
+        }
+
+        return $this;
+    }
+}
+
+$objListaEncadeada = new ListaEncadeada();
+
+$objListaEncadeada->add(10)
+    ->add(20)
+    ->add(30)
+    ->add(40);
+
+$objListaEncadeada->getElementos();
+echo $ds_enter;
+$objListaEncadeada->getElementosFromTop();
+
