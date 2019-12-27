@@ -291,6 +291,26 @@ function ordenar($objLista) {
     }
 }
 
+function pesquisaBinaria ($valor_buscar, $objLista, $esquerda, $direita)
+{
+    $meio = floor(($esquerda + $direita) / 2);
+    $valor_posicao = $objLista->getElemento($meio);
+
+    if ($valor_posicao == $valor_buscar) {
+        return "Buscar: " . $valor_posicao;
+    }
+    
+    if ($esquerda >= $direita) {
+        return -1; // não encontrado
+    } else {
+        if ($valor_posicao < $valor_buscar) {
+            return PesquisaBinaria($valor_buscar, $objLista, $meio + 1, $direita);
+        } else {
+            return PesquisaBinaria($valor_buscar, $objLista, $esquerda, $meio - 1);
+        }
+    }
+}
+
 
 $objListaEncadeada->getElementos();
 echo $ds_enter;
@@ -313,8 +333,21 @@ echo $ds_enter;
 
 $objListaEncadeada->zerarContador();
 
+iniciarTimer();
 
 ordenar($objListaEncadeada);
-$objListaEncadeada->getElementos();
+
+echo pesquisaBinaria(
+    $valor_busca, 
+    $objListaEncadeada,
+    0, 
+    $objListaEncadeada->getTamanho()
+);
 echo $ds_enter;
 
+verificarTimer();
+echo $ds_enter;
+
+// se quiser ver a lista ordenada
+$objListaEncadeada->getElementos();
+echo $ds_enter;
