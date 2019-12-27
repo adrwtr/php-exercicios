@@ -693,5 +693,7 @@ $objListaEncadeada->add(10)
 
 $objListaEncadeada->getElementos();
 echo $ds_enter;
+
 $objListaEncadeada->getElementosFromTop();
+echo $ds_enter;
 

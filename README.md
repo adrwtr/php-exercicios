@@ -25,3 +25,9 @@ php exercicio_7.php
 
 # 8 - Classes
 php exercicio_8.php
+
+# 9 - Estruturas de Dados
+php exercicio_9.php
+
+# 10 - Algoritimos de Busca
+php exercicio_10.php
