@@ -565,7 +565,7 @@ echo $ds_enter;
 
 
 
-/** 
+/**
  * Lista duplamente encadeada
  * É uma lista que conhece o proximo elemento, e também o elemento anterior
  */
@@ -645,7 +645,7 @@ class ListaEncadeada {
         return $this->nr_tamanho;
     }
 
-    public function getValue() {        
+    public function getValue() {
         return $this->objElementoAtual->getValor();
     }
 
@@ -660,7 +660,7 @@ class ListaEncadeada {
 
             if ($objElemento  != null) {
                 $valor = $objElemento->getValor();
-            }            
+            }
         }
 
         return $this;
@@ -677,7 +677,7 @@ class ListaEncadeada {
 
             if ($objElemento  != null) {
                 $valor = $objElemento->getValor();
-            }            
+            }
         }
 
         return $this;

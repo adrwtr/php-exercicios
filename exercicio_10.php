@@ -8,20 +8,20 @@ $time_end = 0;
 $execution_time = 0;
 
 function iniciarTimer() {
-    $GLOBALS['time_start'] = microtime(true); 
+    $GLOBALS['time_start'] = microtime(true);
 }
 
 function verificarTimer() {
     $GLOBALS['time_end'] = microtime(true);
-    //dividing with 60 will give the execution time in minutes otherwise seconds
+
     $GLOBALS['execution_time'] = ($GLOBALS['time_end'] - $GLOBALS['time_start']);
 
-    //execution time of the script
-    echo 'Total Execution Time: '. $GLOBALS['execution_time'] . ' Mins' . "\n";
+    // Tempo de execução
+    echo 'Total Execution Time: '. $GLOBALS['execution_time'] . "\n";
 }
 
 
-/** 
+/**
  * Lista duplamente encadeada
  * É uma lista que conhece o proximo elemento, e também o elemento anterior
  */
@@ -116,7 +116,7 @@ class ListaEncadeada {
 
             if ($objElemento  != null) {
                 $valor = $objElemento->getValor();
-            }            
+            }
         }
 
         return $this;
@@ -133,7 +133,7 @@ class ListaEncadeada {
 
             if ($objElemento  != null) {
                 $valor = $objElemento->getValor();
-            }            
+            }
         }
 
         return $this;
@@ -225,7 +225,7 @@ class ListaEncadeada {
 }
 
 $objListaEncadeada = new ListaEncadeada();
-
+$objListaEncadeadaClone = new ListaEncadeada();
 
 // preencher a lista
 var_dump(time() / (60*60*24));
@@ -236,18 +236,21 @@ $valor_busca = 0;
 for ($i = 1; $i <= 100; $i++) {
     $valor = rand(1, 100);
     $objListaEncadeada->add($valor);
+    $objListaEncadeadaClone->add($valor);
 
-    if ($i == 50) {
+    if ($i == 99) {
         $valor_busca = $valor;
     }
 }
 
+
+echo "Nossa lista: \n";
 $objListaEncadeada->getElementos();
 echo $ds_enter;
 
 
-
 // busca simples
+// varremos o array em busca de nosso elemento
 function buscar($valor_busca, $objLista) {
     $valor_atual = $objLista->getNext();
 
@@ -257,14 +260,15 @@ function buscar($valor_busca, $objLista) {
         }
 
         $valor_atual = $objLista->getNext();
-    } 
+    }
 
     return "valor nao encontrado";
 }
 
 iniciarTimer();
-echo "Buscar : " . $valor_busca . " - " . buscar($valor_busca, $objListaEncadeada);
+echo "Resultado busca simples: " . $valor_busca . " - " . buscar($valor_busca, $objListaEncadeada);
 echo $ds_enter;
+echo "####################\n\n";
 verificarTimer();
 
 
@@ -291,6 +295,10 @@ function ordenar($objLista) {
     }
 }
 
+
+// pela busca binaria
+// se verifica o elemento do meio do array
+// se ele nao for igual, verificamos se ele é maior e diminuimos pela metade o local a ser verificado
 function pesquisaBinaria ($valor_buscar, $objLista, $esquerda, $direita)
 {
     $meio = floor(($esquerda + $direita) / 2);
@@ -299,7 +307,7 @@ function pesquisaBinaria ($valor_buscar, $objLista, $esquerda, $direita)
     if ($valor_posicao == $valor_buscar) {
         return "Buscar: " . $valor_posicao;
     }
-    
+
     if ($esquerda >= $direita) {
         return -1; // não encontrado
     } else {
@@ -312,6 +320,7 @@ function pesquisaBinaria ($valor_buscar, $objLista, $esquerda, $direita)
 }
 
 
+echo "Nossa lista: \n";
 $objListaEncadeada->getElementos();
 echo $ds_enter;
 
@@ -334,13 +343,21 @@ echo $ds_enter;
 $objListaEncadeada->zerarContador();
 
 iniciarTimer();
-
+echo "Ordenacao do array: \n";
 ordenar($objListaEncadeada);
 
+verificarTimer();
+echo "####################\n\n";
+
+
+iniciarTimer();
+
+echo "Pesquisa Binaria\n";
+
 echo pesquisaBinaria(
-    $valor_busca, 
+    $valor_busca,
     $objListaEncadeada,
-    0, 
+    0,
     $objListaEncadeada->getTamanho()
 );
 echo $ds_enter;
@@ -348,6 +365,80 @@ echo $ds_enter;
 verificarTimer();
 echo $ds_enter;
 
+
 // se quiser ver a lista ordenada
 $objListaEncadeada->getElementos();
 echo $ds_enter;
+
+echo "####################\n\n";
+
+
+
+function swap($objLista, $a, $b) {
+    $valor_temp = $objLista->getElementoObjeto($a)->getValor();
+
+    $objLista->getElementoObjeto($a)->setValor(
+        $objLista->getElementoObjeto($b)->getValor()
+    );
+
+    $objLista->getElementoObjeto($b)
+        ->setValor($valor_temp);
+}
+
+function partition ($objLista, $low, $high)
+{
+    // $pivot (Element to be placed at right position)
+    $pivot = $objLista->getElemento($high);
+
+    $i = ($low - 1);  // Index of smaller element
+
+    for ($j = $low; $j <= $high - 1; $j++)
+    {
+        // If current element is smaller than the $pivot
+        if ($objLista->getElemento($j) < $pivot)
+        {
+            $i++;    // increment index of smaller element
+            swap($objLista, $i, $j);
+        }
+    }
+
+    swap($objLista, $i + 1, $high);
+
+    return ($i + 1);
+}
+
+function quickSort($objLista, $low, $high)
+{
+    if ($low < $high)
+    {
+        /* pi is partitioning index, arr[p] is now
+        at right place */
+        $pi = partition($objLista, $low, $high);
+
+        // Separately sort elements before
+        // partition and after partition
+        quickSort($objLista, $low, $pi - 1);
+        quickSort($objLista, $pi + 1, $high);
+    }
+}
+
+echo "iniciando quick sort:";
+
+// se quiser ver a lista ordenada
+$objListaEncadeadaClone->getElementos();
+echo $ds_enter;
+
+$objListaEncadeadaClone->zerarContador();
+
+iniciarTimer();
+
+quickSort($objListaEncadeadaClone, 1, $objListaEncadeadaClone->getTamanho() - 1);
+
+verificarTimer();
+echo $ds_enter;
+
+// se quiser ver a lista ordenada
+$objListaEncadeadaClone->getElementos();
+echo $ds_enter;
+
+echo "####################\n\n";
